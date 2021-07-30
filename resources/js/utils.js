@@ -19,7 +19,7 @@ const sleep = time => new Promise(resolve => setTimeout(resolve, time));
 
 /**
  * Cast to Array.
- * @param {} before - before casting
+ * @param {any} before - before casting
  * @return {Array} - after casting
  */
 const castArray = before => Array.prototype.slice.call(before);
