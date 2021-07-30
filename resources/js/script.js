@@ -19,7 +19,7 @@ const WORD_DIE_TIME = 2000;
 // default values
 let word = "バリュー";
 let interval = 10;
-let wordsLifeLimit = 256;
+let wordsLifeLimit = 32;
 
 // random words
 
@@ -41,6 +41,8 @@ castArray(document.getElementsByClassName("random-words"))
         // create a word element
         const wordElm = wordElmTemplate.cloneNode(true);
         randomWordsElm.appendChild(wordElm);
+        wordElm.style.fontSize = `${(randomWordsElm.offsetHeight + randomWordsElm.offsetWidth) * Math.random() / 16}px`;
+        wordElm.style.color = `rgb(${Math.floor(Math.random() * 192)}, ${Math.floor(Math.random() * 192)}, ${Math.floor(Math.random() * 192)})`;
         wordHeightPer = 100 * wordElm.clientHeight / randomWordsElm.offsetHeight;
         wordWidthPer = 100 * wordElm.clientWidth / randomWordsElm.offsetWidth;
         wordElm.style.top = `${-wordHeightPer + Math.random() * (wordHeightPer + 100)}%`;
