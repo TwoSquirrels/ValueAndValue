@@ -52,7 +52,7 @@ castArray(document.getElementsByClassName("random-words"))
         if (counter >= wordsLifeLimit) {
           const dyingWord = randomWordsElm.querySelector(".word:not(.dying)");
           dyingWord.classList.add("dying");
-          dyingWord.style.transition = `opacity ${WORD_DIE_TIME}s 0.0s ease`;
+          dyingWord.style.transition = `opacity ${WORD_DIE_TIME / 1000}s 0.0s ease`;
           dyingWord.style.opacity = "0.0";
           sleep(WORD_DIE_TIME).then(() => randomWordsElm.removeChild(randomWordsElm.firstChild));
         }
