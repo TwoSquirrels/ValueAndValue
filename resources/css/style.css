@@ -27,6 +27,10 @@ main .random-words {
 
 main .word {
   position: absolute;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  opacity: 0.0;
 }
 
 footer {
