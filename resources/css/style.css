@@ -14,6 +14,21 @@ body {
   position: relative;
 }
 
+main {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+main .random-words {
+  height: 100%;
+  width: 100%;
+}
+
+main .word {
+  position: absolute;
+}
+
 footer {
   position: fixed;
   width: 100%;
