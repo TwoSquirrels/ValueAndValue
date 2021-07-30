@@ -16,3 +16,10 @@ License:
  * @rerurn {Promise} - a Promise that waits for the specified time in milliseconds
  */
 const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+
+/**
+ * Cast to Array.
+ * @param {} before - before casting
+ * @return {Array} - after casting
+ */
+const castArray = before => Array.prototype.slice.call(before);
