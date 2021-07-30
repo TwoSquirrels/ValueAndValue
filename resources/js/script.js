@@ -16,18 +16,33 @@ const WORD_DIE_TIME = 2000;
 
 // argments
 
-// default values
-let word = "バリュー";
-let interval = 10;
-let wordsLifeLimit = 32;
+const query = (new Url).query;
+const words = query.word ? query.word : [];
+const interval = query.interval ? parseInt(query.interval) : 10;
+const wordsLifeLimit = query.limit ? parseInt(query.limit) : 32;
 
 // random words
 
 // preparation
 const wordElmTemplate = document.createElement("p");
-wordElmTemplate.appendChild(document.createTextNode(word));
+wordElmTemplate.appendChild(document.createTextNode(
+  !(words instanceof Array)
+    ? words
+    : words.length == 1
+      ? words[0]
+      : "バリュー"
+));
 wordElmTemplate.classList.add("word");
 wordElmTemplate.style.transition = `opacity ${WORD_BORN_TIME / 1000}s 0.0s ease`;
+
+// stop trigger
+let stopping = false;
+function stop() {
+  stopping = true;
+}
+function restart() {
+  stopping = false;
+}
 
 // for all random-words
 castArray(document.getElementsByClassName("random-words"))
@@ -41,6 +56,9 @@ castArray(document.getElementsByClassName("random-words"))
         // create a word element
         const wordElm = wordElmTemplate.cloneNode(true);
         randomWordsElm.appendChild(wordElm);
+        if (words instanceof Array && words.length >= 2) {
+          wordElm.innerText = words[Math.floor(words.length * Math.random())];
+        }
         wordElm.style.fontSize = `${(randomWordsElm.offsetHeight + randomWordsElm.offsetWidth) * Math.random() / 16}px`;
         wordElm.style.color = `rgb(${Math.floor(Math.random() * 192)}, ${Math.floor(Math.random() * 192)}, ${Math.floor(Math.random() * 192)})`;
         wordHeightPer = 100 * wordElm.clientHeight / randomWordsElm.offsetHeight;
@@ -49,6 +67,7 @@ castArray(document.getElementsByClassName("random-words"))
         wordElm.style.left = `${-wordWidthPer + Math.random() * (wordWidthPer + 100)}%`;
         // wait sleeping
         await sleepPrm;
+        new Promise(() => console.log(`${1 + counter}th new Element:\t${wordElm.outerHTML}`));
         // reload elements
         wordElm.style.opacity = "1.0";
         if (counter >= wordsLifeLimit) {
@@ -57,6 +76,10 @@ castArray(document.getElementsByClassName("random-words"))
           dyingWord.style.transition = `opacity ${WORD_DIE_TIME / 1000}s 0.0s ease`;
           dyingWord.style.opacity = "0.0";
           sleep(WORD_DIE_TIME).then(() => randomWordsElm.removeChild(randomWordsElm.firstChild));
+        }
+        // stop
+        while (stopping) {
+          await sleep(100);
         }
       }
       
