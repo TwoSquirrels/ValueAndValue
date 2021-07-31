@@ -10,6 +10,17 @@ License:
   url: https://apache.org/licenses/LICENSE-2.0
 -*/
 
+let debugMode = false;
+let stopping = false;
+console.log("何見てんだ。");
+console.log("まぁちょうどいい。君にいい事を教えてやろう。");
+console.log("まず、'debugMode'という変数をtrueにすればログが出るようになるぞ。ただしなんか重いから注意な。");
+console.log("あと、'stopping'をtrueにしてる間はメインループが止まるって事も覚えておくといいぞ。");
+console.log("なんでこんな大事な情報を教えたかって？それはな...\n\n\n\n\n\n\n\n");
+console.log("お ま え を 生 き て 帰 す 気 が な い か ら だ");
+console.log("\n\n\n\n\n\n\n\nなんでもないですやってみたかっただけです");
+// は？なにここまで覗いてんだよ...ちょっやめろって...///
+
 // constants
 const WORD_BORN_TIME = 500;
 const WORD_DIE_TIME = 2000;
@@ -35,15 +46,6 @@ wordElmTemplate.appendChild(document.createTextNode(
 wordElmTemplate.classList.add("word");
 wordElmTemplate.style.transition = `opacity ${WORD_BORN_TIME / 1000}s 0.0s ease`;
 
-// stop trigger
-let stopping = false;
-function stop() {
-  stopping = true;
-}
-function restart() {
-  stopping = false;
-}
-
 // for all random-words
 castArray(document.getElementsByClassName("random-words"))
   .forEach(randomWordsElm => {
@@ -67,7 +69,7 @@ castArray(document.getElementsByClassName("random-words"))
         wordElm.style.left = `${-wordWidthPer + Math.random() * (wordWidthPer + 100)}%`;
         // wait sleeping
         await sleepPrm;
-        new Promise(() => console.log(`${1 + counter}th new Element:\t${wordElm.outerHTML}`));
+        if (debugMode) new Promise(() => console.log(`${1 + counter}th new Element:\t${wordElm.outerHTML}`));
         // reload elements
         wordElm.style.opacity = "1.0";
         if (counter >= wordsLifeLimit) {
