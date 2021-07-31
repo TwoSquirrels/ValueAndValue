@@ -1,0 +1,68 @@
+/*-
+ProjectName: ValueAndValue
+FileName: style.css
+Encoding: UTF-8
+Author: TwoSquirrels
+CreationDate: Jul 30, 2021
+Copyright: (c) 2021 TwoSquirrels
+License:
+  name: Apache License, Version 2.0
+  url: https://apache.org/licenses/LICENSE-2.0
+-*/
+
+body {
+  position: relative;
+}
+
+main {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+main .random-words {
+  height: 100%;
+  width: 100%;
+}
+
+main .word {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  opacity: 0.0;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 32;
+  background-color: rgba(var(--theme-color-rgb), 0.5);
+}
+
+footer .container {
+  margin: 5px 20%;
+  text-align: center;
+}
+
+footer .container > * {
+  display: inline-block;
+}
+
+footer .sns {
+  margin: 5px 0;
+}
+
+footer .sns > * {
+  display: inline-block;
+}
+
+footer .twitter {
+  margin: 0px 0;
+}
+
+footer .copyright {
+  margin: 5px 0;
+  color: gray;
+}
