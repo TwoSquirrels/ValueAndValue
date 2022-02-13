@@ -5,6 +5,7 @@
 ## License
 
 [Apache License, Version 2.0](/LICENSE)  
+(C) 2021 TwoSquirrels  
 
 ## Options
 
