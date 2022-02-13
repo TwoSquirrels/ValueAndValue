@@ -5,6 +5,7 @@
 ## License
 
 [Apache License, Version 2.0](/LICENSE)  
+(C) 2021 TwoSquirrels  
 
 ## Options
 
@@ -25,3 +26,7 @@
 - [(url)](https://twosquirrels.github.io/ValueAndValue/): 32  
 - [(url)?limit=4](https://twosquirrels.github.io/ValueAndValue/?limit=4): 4  
 - [(url)?limit=256](https://twosquirrels.github.io/ValueAndValue/?limit=256): 256  
+
+## Why did me make this
+
+See [this conversation (Twitter)](https://twitter.com/Nonato_Note/status/1420949372653563909).  
